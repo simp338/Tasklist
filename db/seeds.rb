@@ -5,6 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-(1..10).each do |number|
-  Task.create(tasks: "タスク#{number.to_s}")
+(1..50).each do |number|
+  Task.create(content: "タスク#{number.to_s}", status: "未処理")
 end
