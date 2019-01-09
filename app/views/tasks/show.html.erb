@@ -3,7 +3,4 @@
 <p>タスク：<%= @task.content %>【<%= @task.status %>】</p>
 
 <%= link_to "編集", edit_task_path(@task), class: "btn btn-success" %>
-<!-- buttonタグで囲むと、中のテキスト「削除」の文字色が白になってくれない -->
-<button class="btn btn-warning">
-  <%= link_to "削除", @task, method: :DELETE ,data: { confirm: "本当に削除してよろしいですか"}%>
-</button>
+<%= link_to "削除", @task, method: :DELETE ,data: { confirm: "本当に削除してよろしいですか"}, class: "btn btn-danger" %>
