@@ -1,4 +1,6 @@
-<nav class="navbar navbar-default">
+<header>
+
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -10,9 +12,19 @@
     </div>
     
     <div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "タスクを登録", new_task_path %></li>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+        <li class=""><%= link_to "タスクを登録", new_task_path %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+        <span class="navbar-text">ログイン中のユーザ：<%= current_user.name %> (id:<%= current_user.id %>)</span>
+        <% else %>
+        <li><%= link_to "ユーザ登録", signup_path %></li>
+        <li><%= link_to "ログイン", login_path %></li>
+        <% end %>
       </ul>
+      <ul
     </div>
   </div>
 </nav>
+
+</header>
