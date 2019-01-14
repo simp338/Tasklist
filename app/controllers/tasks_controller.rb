@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:update, :destroy, :edit, :show]
   before_action :require_user_logged_in
+  before_action :set_task, only: [:update, :destroy, :edit, :show]
 
   def new
     @task = Task.new
@@ -10,7 +10,7 @@ class TasksController < ApplicationController
     @tasks = current_user.tasks.order("created_at DESC").page(params[:page])
     counts(current_user)
   end
-  
+
   def update
 
     if @task.update(task_params)
@@ -54,7 +54,9 @@ class TasksController < ApplicationController
   end
   
   def set_task
-    @task = current_user.tasks.find(params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
+    if !@task
+      redirect_to root_url
+    end
   end
-  
 end
